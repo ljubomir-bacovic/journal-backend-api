@@ -2,5 +2,5 @@
 
 namespace Journal.Domain.Model.ToDoItem;
 
-public record ToDoItemCreateModel(string Name, string Description, TaskPriority? Priority,
-    DateTimeOffset? DueDate, bool ExactDateTime, int? Duration);
+public record ToDoItemCreateModel(string Name, string Description, int Priority,
+    DateTime? DueDate, bool ExactDateTime, int? Duration);

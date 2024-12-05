@@ -13,6 +13,16 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
+var myPolicyName = "MyPolicyName"; // you will specify the exact same string in different places, so assigning policy names to variables avoids potential typo mistakes.
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: myPolicyName,
+      configurePolicy: policy =>
+      {
+          policy.AllowAnyOrigin()
+          .AllowAnyMethod().AllowAnyHeader();
+      });
+});
 var identityConnectionString = builder.Configuration["ConnectionStrings:IdentityConnection"];
 var dataConnectionString = builder.Configuration["ConnectionStrings:DataConnection"];
 
@@ -59,9 +69,12 @@ if (app.Environment.IsDevelopment())
 
 app.UseMiddleware<ExceptionMiddleware>();
 
+app.UseCors(myPolicyName);
+
 app.UseHttpsRedirection();
 
 app.UseAuthentication();
+app.UseRouting();
 app.UseAuthorization();
 
 app.MapControllers();

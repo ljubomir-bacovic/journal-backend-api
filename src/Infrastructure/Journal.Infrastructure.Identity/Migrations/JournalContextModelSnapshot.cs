@@ -96,8 +96,8 @@ namespace Journal.Domain.Identity.Migrations
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
 
-                    b.Property<DateTimeOffset?>("LockoutEnd")
-                        .HasColumnType("datetimeoffset");
+                    b.Property<DateTime?>("LockoutEnd")
+                        .HasColumnType("DateTime");
 
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256)

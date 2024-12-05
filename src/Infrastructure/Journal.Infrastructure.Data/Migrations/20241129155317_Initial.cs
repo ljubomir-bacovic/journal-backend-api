@@ -20,12 +20,12 @@ namespace Journal.Domain.Data.Migrations
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Priority = table.Column<int>(type: "int", nullable: true),
-                    DueDate = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
+                    DueDate = table.Column<DateTime>(type: "DateTime", nullable: true),
                     ExactDateTime = table.Column<bool>(type: "bit", nullable: false),
                     Duration = table.Column<int>(type: "int", nullable: true),
                     Completed = table.Column<bool>(type: "bit", nullable: false),
-                    CreatedOn = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
-                    UpdatedOn = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false)
+                    CreatedOn = table.Column<DateTime>(type: "DateTime", nullable: false),
+                    UpdatedOn = table.Column<DateTime>(type: "DateTime", nullable: false)
                 },
                 constraints: table =>
                 {

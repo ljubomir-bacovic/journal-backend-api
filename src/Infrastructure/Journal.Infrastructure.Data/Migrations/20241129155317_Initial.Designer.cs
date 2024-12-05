@@ -34,15 +34,15 @@ namespace Journal.Domain.Data.Migrations
                     b.Property<bool>("Completed")
                         .HasColumnType("bit");
 
-                    b.Property<DateTimeOffset>("CreatedOn")
-                        .HasColumnType("datetimeoffset");
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("DateTime");
 
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTimeOffset?>("DueDate")
-                        .HasColumnType("datetimeoffset");
+                    b.Property<DateTime?>("DueDate")
+                        .HasColumnType("DateTime");
 
                     b.Property<int?>("Duration")
                         .HasColumnType("int");
@@ -57,8 +57,8 @@ namespace Journal.Domain.Data.Migrations
                     b.Property<int?>("Priority")
                         .HasColumnType("int");
 
-                    b.Property<DateTimeOffset>("UpdatedOn")
-                        .HasColumnType("datetimeoffset");
+                    b.Property<DateTime>("UpdatedOn")
+                        .HasColumnType("DateTime");
 
                     b.Property<Guid>("UserId")
                         .HasColumnType("uniqueidentifier");

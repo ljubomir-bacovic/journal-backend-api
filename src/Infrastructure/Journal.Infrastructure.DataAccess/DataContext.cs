@@ -77,7 +77,7 @@ public class DataContext : IDataContext
 
         foreach (var entityEntry in entries)
         {
-            var now = DateTimeOffset.Now;
+            var now = DateTime.Now;
             if (entityEntry.State == EntityState.Added)
             {
                 ((AuditableEntity)entityEntry.Entity).CreatedOn = now;
