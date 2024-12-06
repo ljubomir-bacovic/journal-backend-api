@@ -9,4 +9,5 @@ public interface IToDoItemService
     Task UpdateToDoItemAsync(ToDoItemUpdateModel toDoItemUpdate);
     Task DeleteToDoItemAsync(Guid id);
     Task<ToDoItemGetDetailsModel> GetToDoItem(Guid id);
+    Task CompleteToDoItemAsync(Guid id);
 }

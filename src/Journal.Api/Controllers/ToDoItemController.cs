@@ -64,5 +64,14 @@ namespace Journal.Api.Controllers
             var toDoItem = await _toDoItemService.GetToDoItem(id);
             return Results.Ok(toDoItem);
         }
+
+        [HttpPut("{id:guid}")]
+        [ProducesResponseType<ToDoItemGetDetailsModel>(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IResult> CompleteToDoItem(Guid id)
+        {
+            await _toDoItemService.CompleteToDoItemAsync(id);
+            return Results.Ok();
+        }
     }
 }

@@ -11,5 +11,5 @@ public class ToDoItem : AuditableEntity
     public DateTime? DueDate { get; set; }
     public bool ExactDateTime { get; set; } = false;
     public int? Duration { get; set; }
-    public bool Completed { get; set; } = false;
+    public bool IsCompleted { get; set; } = false;
 }

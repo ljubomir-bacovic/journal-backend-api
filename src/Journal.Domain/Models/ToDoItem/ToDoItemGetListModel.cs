@@ -1,4 +1,4 @@
 ﻿namespace Journal.Domain.Model.ToDoItem;
 
-public record ToDoItemGetListModel(Guid Id, string Name, DateTime DueDate);
+public record ToDoItemGetListModel(Guid Id, string Name, string Description, DateTime DueDate, bool IsCompleted);
 

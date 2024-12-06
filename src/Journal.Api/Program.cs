@@ -57,6 +57,11 @@ var app = builder.Build();
 
 app.MapIdentityApi<IdentityUser>();
 
+app.MapPost("/logout", async (SignInManager<IdentityUser> signInManager) =>
+{
+    await signInManager.SignOutAsync().ConfigureAwait(false);
+});
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

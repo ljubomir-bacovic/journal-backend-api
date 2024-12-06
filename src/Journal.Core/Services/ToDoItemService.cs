@@ -63,4 +63,12 @@ public class ToDoItemService : IToDoItemService
         var toDoItem = await _toDoItemRepository.FindAsync(id) ?? throw new ToDoItemNotFoundException(id);
         return _mapper.Map<ToDoItemGetDetailsModel>(toDoItem);
     }
+
+    public async Task CompleteToDoItemAsync(Guid id)
+    {
+        var toDoItem = await _toDoItemRepository.FindAsync(id) ?? throw new ToDoItemNotFoundException(id);
+        toDoItem.IsCompleted = !toDoItem.IsCompleted;
+
+        await _dataContext.SaveChangesAsync();
+    }
 }
