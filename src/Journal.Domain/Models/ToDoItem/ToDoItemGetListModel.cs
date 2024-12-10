@@ -1,4 +1,7 @@
-﻿namespace Journal.Domain.Model.ToDoItem;
+﻿using Journal.Domain.Types;
 
-public record ToDoItemGetListModel(Guid Id, string Name, string Description, DateTime DueDate, bool IsCompleted);
+namespace Journal.Domain.Model.ToDoItem;
+
+public record ToDoItemGetListModel(Guid Id, string Name, string? Description, DateTime DueDate, bool IsCompleted, 
+    TaskPriority? Priority);
 

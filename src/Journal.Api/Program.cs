@@ -27,14 +27,16 @@ var identityConnectionString = builder.Configuration["ConnectionStrings:Identity
 var dataConnectionString = builder.Configuration["ConnectionStrings:DataConnection"];
 
 builder.Services.AddDbContext<IdentityContext>(options =>
-    options.UseSqlServer(identityConnectionString));
+    options.UseSqlServer(identityConnectionString,
+            providerOptions => providerOptions.EnableRetryOnFailure(5, TimeSpan.FromSeconds(10), null)));
 
 builder.Services.AddScoped<IDataContext, DataContext>();
 builder.Services.AddAutoMapper(typeof(ToDoItemProfile));
 builder.Services.AddScoped<IToDoItemService, ToDoItemService>();
 
 builder.Services.AddDbContext<JournalContext>(options =>
-    options.UseSqlServer(dataConnectionString));
+    options.UseSqlServer(dataConnectionString,
+            providerOptions => providerOptions.EnableRetryOnFailure(5, TimeSpan.FromSeconds(10), null)));
 
 builder.Services.AddAuthentication();
 
@@ -55,6 +57,8 @@ var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 
+app.UseCors(myPolicyName);
+
 app.MapIdentityApi<IdentityUser>();
 
 app.MapPost("/logout", async (SignInManager<IdentityUser> signInManager) =>
@@ -74,11 +78,9 @@ if (app.Environment.IsDevelopment())
 
 app.UseMiddleware<ExceptionMiddleware>();
 
-app.UseCors(myPolicyName);
+
 
 app.UseHttpsRedirection();
-
-app.UseAuthentication();
 app.UseRouting();
 app.UseAuthorization();
 

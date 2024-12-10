@@ -63,7 +63,7 @@ public class ExceptionMiddleware
             var problemDetails = new ProblemDetails()
             {
                 Status = StatusCodes.Status500InternalServerError,
-                Detail = ex.Message,
+                Detail = "Message: " + ex.Message + " Inner Exception: " + ex.InnerException,
                 Instance = "",
                 Title = "Internal Server Error - something went wrong.",
                 Type = "Error"
