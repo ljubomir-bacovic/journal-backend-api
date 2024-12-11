@@ -22,7 +22,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Infrastructure\Journal.Infrastructure.DataAccess\Journal.Infrastructure.DataAccess.csproj" />
-    <ProjectReference Include="..\Infrastructure\Journal.Infrastructure.Identity\Journal.Infrastructure.Identity.csproj" />
     <ProjectReference Include="..\Journal.Core\Journal.Core.csproj" />
   </ItemGroup>
 

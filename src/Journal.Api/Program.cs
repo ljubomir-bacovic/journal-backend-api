@@ -1,5 +1,4 @@
 using Journal.Domain.Data;
-using Journal.Domain.Identity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Journal.Domain.DataAccess;
@@ -23,12 +22,7 @@ builder.Services.AddCors(options =>
           .AllowAnyMethod().AllowAnyHeader();
       });
 });
-var identityConnectionString = builder.Configuration["ConnectionStrings:IdentityConnection"];
-var dataConnectionString = builder.Configuration["ConnectionStrings:DataConnection"];
-
-builder.Services.AddDbContext<IdentityContext>(options =>
-    options.UseSqlServer(identityConnectionString,
-            providerOptions => providerOptions.EnableRetryOnFailure(5, TimeSpan.FromSeconds(10), null)));
+var dataConnectionString = builder.Configuration["ConnectionStrings:JournalConnection"];
 
 builder.Services.AddScoped<IDataContext, DataContext>();
 builder.Services.AddAutoMapper(typeof(ToDoItemProfile));
@@ -43,7 +37,7 @@ builder.Services.AddAuthentication();
 builder.Services.AddAuthorization();
 
 builder.Services.AddIdentityApiEndpoints<IdentityUser>()
-    .AddEntityFrameworkStores<IdentityContext>();
+    .AddEntityFrameworkStores<JournalContext>();
 
 builder.Services.AddControllers();
 

@@ -1,9 +1,11 @@
 ﻿using Journal.Domain.Entities;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Journal.Domain.Data;
 
-public class JournalContext : DbContext
+public class JournalContext : IdentityDbContext<IdentityUser>
 {
     public required DbSet<ToDoItem> ToDoItems { get; set; }
 
